@@ -1,0 +1,84 @@
+import os
+import openai
+import tiktoken
+from llama_index import ServiceContext, LLMPredictor, OpenAIEmbedding, PromptHelper
+from llama_index.llms import OpenAI
+#from llama_index.text_splitter import SentenceSplitter
+from llama_index.text_splitter import TokenTextSplitter
+from llama_index.node_parser import SimpleNodeParser
+from llama_index import VectorStoreIndex, SimpleDirectoryReader
+from llama_index import set_global_service_context
+from llama_index.response.pprint_utils import pprint_response
+from llama_index.tools import QueryEngineTool, ToolMetadata
+from llama_index.query_engine import SubQuestionQueryEngine
+from llama_index.llms import AzureOpenAI
+from llama_index import set_global_service_context
+from llama_index.embeddings import AzureOpenAIEmbedding
+os.environ["OPENAI_API_KEY"] = "62855d6dd08945819bf83aee0c104127"
+os.environ["AZURE_OPENAI_ENDPOINT"] = "https://dskumar.openai.azure.com/"
+os.environ["OPENAI_API_VERSION"] = "2023-07-01-preview"
+os.environ["DEPLOYMENT_NAME"] = "DskumarDeployment"
+os.environ["LLM_MODEL"] = "gpt-35-turbo-16k"
+openai.api_key=os.getenv("OPENAI_API_KEY")
+openai.api_version = os.getenv("OPENAI_API_VERSION")
+
+
+llm = AzureOpenAI(azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"), api_version=openai.api_version, engine=os.getenv("DEPLOYMENT_NAME"), model=os.getenv("LLM_MODEL"), temperature=0.0,)
+
+
+
+text_splitter = TokenTextSplitter(
+  separator=" ",
+  chunk_size=1024,
+  chunk_overlap=20,
+  backup_separators=["\n"],
+  tokenizer=tiktoken.encoding_for_model("gpt-35-turbo-16k").encode
+)
+#embed_model = OpenAIEmbedding(embed_batch_size=10)
+embed_model = AzureOpenAIEmbedding()
+# embed_model = AzureOpenAIEmbedding(
+#     model="text-embedding-ada-002",
+#     deployment_name=os.getenv("DEPLOYMENT_NAME"),
+#     api_key=openai.api_key,
+#     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+#     api_version=openai.api_version,
+# )
+#node_parser = SimpleNodeParser.from_defaults(
+#  text_splitter=text_splitter
+#)
+prompt_helper = PromptHelper(
+    context_window=4096,
+    num_output=256,
+    chunk_overlap_ratio=0.1,
+    chunk_size_limit=None,
+)
+service_context = ServiceContext.from_defaults(
+    llm=llm,
+    embed_model=embed_model,
+    text_splitter=text_splitter,
+    #node_parser=node_parser,
+    prompt_helper=prompt_helper,
+)
+set_global_service_context(service_context)
+
+
+
+!mkdir -p 'data/10k/'
+!wget 'https://raw.githubusercontent.com/run-llama/llama_index/main/docs/examples/data/10k/uber_2021.pdf' -O 'data/10k/uber_2021.pdf'
+!wget 'https://d18rn0p25nwr6d.cloudfront.net/CIK-0001018724/f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf' -O 'data/10k/amazon_2023.pdf'
+uber_docs = SimpleDirectoryReader(input_files=["./data/10k/uber_2021.pdf"]).load_data()
+amazon_docs = SimpleDirectoryReader(input_files=["./data/10k/amazon_2023.pdf"]).load_data()
+print(f'Loaded Uber 10-K with {len(uber_docs)} pages')
+print(f'Loaded Amazon 10-K with {len(amazon_docs)} pages')
+
+
+uber_index = VectorStoreIndex.from_documents(uber_docs)
+uber_index.storage_context.persist()
+amazon_index = VectorStoreIndex.from_documents(amazon_docs)
+amazon_index.storage_context.persist()
+#uber_engine = uber_index.as_query_engine(similarity_top_k=3)
+#response = await uber_engine.aquery('What is the revenue of Uber in 2021? Answer in millions, with page reference')
+#print(response)
+query_engine = uber_index.as_query_engine(service_context=service_context)
+response = await query_engine.query("What is the revenue of Uber in 2021? Answer in millions, with page reference")
+print(response)
