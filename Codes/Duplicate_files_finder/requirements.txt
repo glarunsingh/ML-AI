@@ -1,0 +1,16 @@
+scipy~=1.13.0
+numpy~=1.26.4
+uvicorn
+tkinter
+docx2txt~=0.8
+hashlib
+sentence_transformers
+PyPDF2~=3.0.1
+tensorflow~=2.10.0
+pickle
+shutil
+os
+streamlit~=1.32.2
+ironpdf~=2024.3.1.3
+
+pandas~=2.2.1
