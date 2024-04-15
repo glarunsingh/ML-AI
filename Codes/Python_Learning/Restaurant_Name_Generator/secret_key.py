@@ -1,2 +1,2 @@
-openapi_key = "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"
+openapi_key = "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"
 huggingfacehub_api_token = "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"
