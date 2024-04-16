@@ -1,0 +1,3 @@
+openapi_key = "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"
+huggingfacehub_api_token = "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"
+serpapi_key = "1760ba98e6022f7fb15e11752ab52a5f5166f5cf9fd4db239c6751521a1e060c"
