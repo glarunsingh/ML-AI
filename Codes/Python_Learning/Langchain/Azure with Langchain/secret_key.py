@@ -1,4 +1,4 @@
-openapi_key = "sk-proj-xmhxZr1h2oMWL2FhIi3xT3BlbkFJk26n0TjuvquJAX3hR0CE"
+openapi_key = "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"
 huggingfacehub_api_token = "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"
 serpapi_key = "1760ba98e6022f7fb15e11752ab52a5f5166f5cf9fd4db239c6751521a1e060c"
 azure_openai_api_key="62855d6dd08945819bf83aee0c104127"
