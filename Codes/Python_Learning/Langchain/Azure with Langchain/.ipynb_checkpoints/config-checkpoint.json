@@ -1,0 +1,5 @@
+{
+    "DEPLOYMENT_NAME":"DskumarDeployment",
+    "OPENAI_API_BASE":"https://dskumar.openai.azure.com/",
+    "OPENAI_API_VERSION":"2023-07-01-preview"
+}
