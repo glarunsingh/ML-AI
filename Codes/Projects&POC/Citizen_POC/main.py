@@ -5,12 +5,12 @@ openai.api_type = "azure"
 openai.api_version = "2023-08-01-preview"
 
 # Azure OpenAI setup
-openai.api_base = https://dskumar.openai.azure.com/ # Add your endpoint here
+openai.api_base = "https://dskumar.openai.azure.com/" # Add your endpoint here
 openai.api_key = os.getenv("OPENAI_API_KEY") # Add your OpenAI API key here
 deployment_id = "DskumarDeployment" # Add your deployment ID here
 
 # Azure AI Search setup
-search_endpoint = https://dskumarsearch.search.windows.net; # Add your Azure AI Search endpoint here
+search_endpoint = "https://dskumarsearch.search.windows.net"; # Add your Azure AI Search endpoint here
 search_key = os.getenv("SEARCH_KEY"); # Add your Azure AI Search admin key here
 search_index_name = "citizenbank"; # Add your Azure AI Search index name here
 
