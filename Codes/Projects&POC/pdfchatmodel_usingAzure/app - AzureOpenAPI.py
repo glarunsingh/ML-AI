@@ -8,7 +8,7 @@ from langchain_core.messages import AIMessage,SystemMessage,HumanMessage
 from langchain_openai import AzureChatOpenAI ## LLM model - Chat GPT 3
 from langchain_openai import AzureOpenAIEmbeddings##embedding type
 from langchain_community.vectorstores import FAISS ## Vector DB
-from langchain.retrievers import SVMRetriever ### classification model
+from langchain_community.retrievers import SVMRetriever ### classification model
 from langchain.chains import QAGenerationChain ### QA pair Generator 
 from langchain.text_splitter import RecursiveCharacterTextSplitter ### for spliting the doc
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
