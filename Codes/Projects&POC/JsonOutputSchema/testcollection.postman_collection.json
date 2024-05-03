@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
+		"name": "testcollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "98974"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/get-claim",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"excd\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"details\":[    {  \r\n        \"currentClaim\": {\r\n            \"claimId\": \"123\",\r\n            \"billType\": 0,\r\n            \"reimbursementMethod\": \"cash\",\r\n            \"duplicate\": false,\r\n            \"denyReason\": \"\",\r\n            \"hasAdditionalRevCodes\": false,\r\n            \"pending\": true\r\n        },\r\n        \"previousClaim\": {\r\n            \"claimId\": \"456\",\r\n            \"billType\": 2,\r\n            \"reimbursementMethod\": \"check\",\r\n            \"duplicate\": true,\r\n            \"denyReason\": \"Invalid claim\",\r\n            \"hasAdditionalRevCodes\": true,\r\n            \"pending\": false\r\n        } }  \r\n      ]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/get-claim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get-claim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/get-claim",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"excd\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"details\":[    {  \r\n        \"currentClaim\": {\r\n            \"claimId\": \"123\",\r\n            \"billType\": 5,\r\n            \"reimbursementMethod\": \"cash\",\r\n            \"duplicate\": false,\r\n            \"denyReason\": \"\",\r\n            \"hasAdditionalRevCodes\": false,\r\n            \"pending\": true\r\n        },\r\n        \"previousClaim\": {\r\n            \"claimId\": \"456\",\r\n            \"billType\": 2,\r\n            \"reimbursementMethod\": \"check\",\r\n            \"duplicate\": true,\r\n            \"denyReason\": \"Invalid claim\",\r\n            \"hasAdditionalRevCodes\": true,\r\n            \"pending\": false\r\n        } }  \r\n      ]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/get-claim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get-claim"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
