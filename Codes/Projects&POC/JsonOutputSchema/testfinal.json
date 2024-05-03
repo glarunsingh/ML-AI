@@ -1,0 +1,270 @@
+{
+  "info": {
+		"_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
+		"name": "testcollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "98974"
+	},
+  "item": [
+    {
+      "name": "Positive Flow Test",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Positive Flow Test\")"],
+            "type": "Positive Flow",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Negative Flow Test",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Negative Flow Test\")"],
+            "type": "Negative Flow",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case Test",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Edge Case Test\")"],
+            "type": "Edge Case",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Case 4",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Test Case 4\")"],
+            "type": "Positive Flow",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Case 5",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Test Case 5\")"],
+            "type": "Negative Flow",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Case 6",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Test Case 6\")"],
+            "type": "Edge Case",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Case 7",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Test Case 7\")"],
+            "type": "Positive Flow",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Case 8",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Test Case 8\")"],
+            "type": "Negative Flow",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Case 9",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Test Case 9\")"],
+            "type": "Edge Case",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Case 10",
+      "event": [
+        {
+          "listen": "NonPaymentZeroPay",
+          "script": {
+            "exec": ["System.out.println(\"Test Case 10\")"],
+            "type": "Positive Flow",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": { "mode": "raw", "raw": "", "options": {} },
+        "url": {
+          "raw": "http://example.com",
+          "protocol": "http",
+          "host": ["example", "com"],
+          "port": "",
+          "path": []
+        }
+      },
+      "response": []
+    }
+  ]
+}
