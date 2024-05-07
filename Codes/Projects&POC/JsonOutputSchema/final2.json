@@ -1,0 +1,550 @@
+    {
+    "info": {
+		"_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
+		"name": "testcollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "98974"
+	},
+    "item": [
+        {
+        "name": "Positive Flow 1",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 0,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 1,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Negative Flow 1",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 2,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 3,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Edge Case 1",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 4,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 5,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Positive Flow 2",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 6,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 7,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Negative Flow 2",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 8,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 9,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Edge Case 2",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 10,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 11,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Positive Flow 3",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 12,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 13,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Negative Flow 3",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 14,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 15,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Edge Case 3",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 16,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 17,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        },
+        {
+        "name": "Positive Flow 4",
+        "event": [
+            {
+            "listen": "testEvent",
+            "script": {
+                "exec": ["script1", "script2"],
+                "type": "type1",
+                "packages": {}
+            }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": ["header1", "header2"],
+            "body": {
+            "mode": "mode1",
+            "raw": {
+                "claimsarr": [
+                {
+                    "currentClaim": {
+                    "claimId": "claimId1",
+                    "billType": 18,
+                    "reimbursementMethod": "method1",
+                    "duplicate": true,
+                    "denyReason": "reason1",
+                    "hasAdditionalRevCodes": false,
+                    "pending": false
+                    },
+                    "previousClaim": {
+                    "claimId": "claimId2",
+                    "billType": 19,
+                    "reimbursementMethod": "method2",
+                    "duplicate": false,
+                    "denyReason": "reason2",
+                    "hasAdditionalRevCodes": true,
+                    "pending": true
+                    },
+                    "output_current": { "excd": "excd1", "claimNotes": "notes1" }
+                }
+                ]
+            },
+            "options": {}
+            },
+            "url": {
+            "raw": "raw1",
+            "protocol": "http",
+            "host": ["host1", "host2"],
+            "port": "8080",
+            "path": ["path1", "path2"]
+            }
+        },
+        "response": []
+        }
+    ]
+    }

@@ -1,0 +1,252 @@
+{
+  "info": {
+    "postman_id": "string",
+    "name": "string",
+    "schema_alias": "string",
+    "exporter_id": "string"
+  },
+  "item": [
+    {
+      "name": "Positive Flow Test Case 1",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Negative Flow Test Case 1",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case Test Case 1",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Positive Flow Test Case 2",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Negative Flow Test Case 2",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case Test Case 2",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Positive Flow Test Case 3",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Negative Flow Test Case 3",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case Test Case 3",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Positive Flow Test Case 4",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Negative Flow Test Case 4",
+      "event": [
+        {
+          "listen": "string",
+          "script": { "exec": ["string"], "type": "string", "packages": {} }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": ["string"],
+        "body": { "mode": "string", "raw": "string", "options": {} },
+        "url": {
+          "raw": "string",
+          "protocol": "string",
+          "host": ["string"],
+          "port": "string",
+          "path": ["string"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
