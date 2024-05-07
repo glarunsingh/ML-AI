@@ -1,0 +1,83 @@
+{
+  "info": {
+    "_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
+    "name": "testcollection_test1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "98789"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/get-claim",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          },
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"excd\", function () {",
+              "var jsonData = pm.response.json();",
+              "pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "details": [
+              {
+                "currentClaim": {
+                  "claimId": "claimId",
+                  "billType": 0,
+                  "reimbursementMethod": "Reimbursment method",
+                  "duplicate": true,
+                  "denyReason": "Deny reason",
+                  "hasAdditionalRevCodes": true,
+                  "pending": true
+                },
+                "previousClaim": {
+                  "claimId": "claimId",
+                  "billType": 0,
+                  "reimbursementMethod": "Reimbursment method",
+                  "duplicate": true,
+                  "denyReason": "Deny reason",
+                  "hasAdditionalRevCodes": true,
+                  "pending": true
+                },
+                "output_current": {
+                  "excd": "excd",
+                  "claimNotes": "claim Notes"
+                }
+              }
+            ]
+          },
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://localhost:8080/get-claim",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["get-claim"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

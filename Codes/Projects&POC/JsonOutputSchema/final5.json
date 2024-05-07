@@ -1,0 +1,55 @@
+{
+  "info": {
+    "_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
+    "name": "testcollection2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "98789"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/get-claim",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          },
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"excd\", function () {",
+              "var jsonData = pm.response.json();",
+              "pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"details\": [{\"currentClaim\": {\"claimId\": \"1\", \"billType\": 0, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"previousClaim\": {\"claimId\": \"2\", \"billType\": 1, \"reimbursementMethod\": \"Check\", \"duplicate\": true, \"denyReason\": \"Incomplete Information\", \"hasAdditionalRevCodes\": false, \"pending\": true}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"3\", \"billType\": 2, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"previousClaim\": {\"claimId\": \"4\", \"billType\": 3, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"5\", \"billType\": 4, \"reimbursementMethod\": \"Check\", \"duplicate\": true, \"denyReason\": \"Invalid Documentation\", \"hasAdditionalRevCodes\": false, \"pending\": true}, \"previousClaim\": {\"claimId\": \"6\", \"billType\": 5, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"7\", \"billType\": 6, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"previousClaim\": {\"claimId\": \"8\", \"billType\": 7, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"9\", \"billType\": 8, \"reimbursementMethod\": \"Check\", \"duplicate\": true, \"denyReason\": \"Incomplete Information\", \"hasAdditionalRevCodes\": false, \"pending\": true}, \"previousClaim\": {\"claimId\": \"10\", \"billType\": 9, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"11\", \"billType\": 10, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"previousClaim\": {\"claimId\": \"12\", \"billType\": 11, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"13\", \"billType\": 12, \"reimbursementMethod\": \"Check\", \"duplicate\": true, \"denyReason\": \"Invalid Documentation\", \"hasAdditionalRevCodes\": false, \"pending\": true}, \"previousClaim\": {\"claimId\": \"14\", \"billType\": 13, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"15\", \"billType\": 14, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"previousClaim\": {\"claimId\": \"16\", \"billType\": 15, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"17\", \"billType\": 16, \"reimbursementMethod\": \"Check\", \"duplicate\": true, \"denyReason\": \"Incomplete Information\", \"hasAdditionalRevCodes\": false, \"pending\": true}, \"previousClaim\": {\"claimId\": \"18\", \"billType\": 17, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}, {\"currentClaim\": {\"claimId\": \"19\", \"billType\": 18, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"previousClaim\": {\"claimId\": \"20\", \"billType\": 19, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": true, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}]}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/get-claim",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["get-claim"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
