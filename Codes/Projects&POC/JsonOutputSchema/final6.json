@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
+		"name": "testcollection6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "98974"
+	},
+    "item": [
+    {
+      "name": "Test Case 1",
+      "event": [
+        {
+          "listen1": "prerequest",
+          "script1": {
+            "exec": [
+              "pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          },
+          "listen2": "test",
+          "script2": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"excd\", function () {",
+              "var jsonData = pm.response.json();",
+              "pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"details\":[    {  \n        \"currentClaim\": {\n            \"claimId\": \"123\",\n            \"billType\": 5,\n            \"reimbursementMethod\": \"cash\",\n            \"duplicate\": false,\n            \"denyReason\": \"\",\n            \"hasAdditionalRevCodes\": false,\n            \"pending\": true\n        },\n        \"previousClaim\": {\n            \"claimId\": \"456\",\n            \"billType\": 2,\n            \"reimbursementMethod\": \"check\",\n            \"duplicate\": true,\n            \"denyReason\": \"Invalid claim\",\n            \"hasAdditionalRevCodes\": true,\n            \"pending\": false\n        } }  \n      ]}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://localhost:8080/get-claim",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["get-claim"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
