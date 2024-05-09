@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
+    "name": "testcollection1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "98974"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/get-claim",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"excd\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"details\":[{'currentClaim': {'claimId': '12345', 'billType': 0, 'reimbursementMethod': 'Check', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': False, 'pending': False}, 'previousClaim': {'claimId': '54321', 'billType': 1, 'reimbursementMethod': 'Direct Deposit', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': True, 'pending': True}, 'output_current': {'excd': '5JU', 'claimNotes': 'Claim submitted with bill type 0 provider does not expect payment.'}}]}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://localhost:8080/get-claim",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["get-claim"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/get-claim",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"excd\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"details\":[{'currentClaim': {'claimId': '67890', 'billType': 2, 'reimbursementMethod': 'Direct Deposit', 'duplicate': True, 'denyReason': 'Invalid documentation', 'hasAdditionalRevCodes': False, 'pending': False}, 'previousClaim': {'claimId': '09876', 'billType': 1, 'reimbursementMethod': 'Check', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': False, 'pending': False}, 'output_current': {'excd': '', 'claimNotes': ''}}]}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://localhost:8080/get-claim",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["get-claim"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8080/get-claim",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"excd\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"details\":[{'currentClaim': {'claimId': '24680', 'billType': 3, 'reimbursementMethod': 'Check', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': True, 'pending': True}, 'previousClaim': {'claimId': '86420', 'billType': 2, 'reimbursementMethod': 'Direct Deposit', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': False, 'pending': False}, 'output_current': {'excd': '', 'claimNotes': ''}}]}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "http://localhost:8080/get-claim",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["get-claim"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
