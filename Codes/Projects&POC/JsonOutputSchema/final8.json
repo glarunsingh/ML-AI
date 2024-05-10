@@ -41,7 +41,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\"details\":[{'currentClaim': {'claimId': '12345', 'billType': 0, 'reimbursementMethod': 'Check', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': False, 'pending': False}, 'previousClaim': {'claimId': '54321', 'billType': 1, 'reimbursementMethod': 'Direct Deposit', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': True, 'pending': True}, 'output_current': {'excd': '5JU', 'claimNotes': 'Claim submitted with bill type 0 provider does not expect payment.'}}]}",
+          "raw": "{\"details\":[{\"currentClaim\": {\"claimId\": \"123456\", \"billType\": 0, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"previousClaim\": {\"claimId\": \"789012\", \"billType\": 1, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"output_current\": {\"excd\": \"5JU\", \"claimNotes\": \"Claim submitted with bill type 0 provider does not expect payment.\"}}]}",
           "options": { "raw": { "language": "json" } }
         },
         "url": {
@@ -89,7 +89,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\"details\":[{'currentClaim': {'claimId': '67890', 'billType': 2, 'reimbursementMethod': 'Direct Deposit', 'duplicate': True, 'denyReason': 'Invalid documentation', 'hasAdditionalRevCodes': False, 'pending': False}, 'previousClaim': {'claimId': '09876', 'billType': 1, 'reimbursementMethod': 'Check', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': False, 'pending': False}, 'output_current': {'excd': '', 'claimNotes': ''}}]}",
+          "raw": "{\"details\":[{\"currentClaim\": {\"claimId\": \"345678\", \"billType\": 1, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"previousClaim\": {\"claimId\": \"901234\", \"billType\": 2, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}]}",
           "options": { "raw": { "language": "json" } }
         },
         "url": {
@@ -137,7 +137,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\"details\":[{'currentClaim': {'claimId': '24680', 'billType': 3, 'reimbursementMethod': 'Check', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': True, 'pending': True}, 'previousClaim': {'claimId': '86420', 'billType': 2, 'reimbursementMethod': 'Direct Deposit', 'duplicate': False, 'denyReason': '', 'hasAdditionalRevCodes': False, 'pending': False}, 'output_current': {'excd': '', 'claimNotes': ''}}]}",
+          "raw": "{\"details\":[{\"currentClaim\": {\"claimId\": \"567890\", \"billType\": 2, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"previousClaim\": {\"claimId\": \"123456\", \"billType\": 0, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}]}",
           "options": { "raw": { "language": "json" } }
         },
         "url": {

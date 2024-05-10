@@ -1,7 +1,7 @@
 {
     "info": {
         "_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
-        "name": "testcollection8",
+        "name": "testcollection9",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "_exporter_id": "98974"
     },
@@ -13,7 +13,7 @@
                     "listen": "prerequest",
                     "script": {
                         "exec": [
-                            "// pm.collectionVariables.set(\\"c_billType\\",data[\\"currentClaim\\"][\\"billType\\"]);"
+                            "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
                         ],
                         "type": "text/javascript",
                         "packages": {}
@@ -23,12 +23,12 @@
                     "listen": "test",
                     "script": {
                         "exec": [
-                            "pm.test(\\"Status code is 200\\", function () {\\r",
-                            "    pm.response.to.have.status(200);\\r",
-                            "});\\r",
-                            "pm.test(\\"excd\\", function () {\\r",
-                            "    var jsonData = pm.response.json();\\r",
-                            "    pm.expect(jsonData[0].currentClaim.excd).eq(\\"5JU\\")\\r",
+                            "pm.test(\"Status code is 200\", function () {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"excd\", function () {\r",
+                            "    var jsonData = pm.response.json();\r",
+                            "    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
                             "});"
                         ],
                         "type": "text/javascript",
@@ -41,7 +41,7 @@
                 "header": [],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\\"details\\":[{\'currentClaim\': {\'claimId\': \'1\', \'billType\': 0, \'reimbursementMethod\': \'Check\', \'duplicate\': False, \'denyReason\': \'\', \'hasAdditionalRevCodes\': False, \'pending\': False}, \'previousClaim\': {\'claimId\': \'2\', \'billType\': 1, \'reimbursementMethod\': \'Electronic\', \'duplicate\': False, \'denyReason\': \'\', \'hasAdditionalRevCodes\': True, \'pending\': False}, \'output_current\': {\'excd\': \'5JU\', \'claimNotes\': \'Claim submitted with bill type 0 provider does not expect payment.\'}}]}",
+                    "raw": "{\"details\":[{\"currentClaim\": {\"claimId\": \"123456\", \"billType\": 0, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"previousClaim\": {\"claimId\": \"789012\", \"billType\": 1, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"output_current\": {\"excd\": \"5JU\", \"claimNotes\": \"Claim submitted with bill type 0 provider does not expect payment.\"}}]}",
                     "options": {
                         "raw": {
                             "language": "json"
@@ -69,7 +69,7 @@
                     "listen": "prerequest",
                     "script": {
                         "exec": [
-                            "// pm.collectionVariables.set(\\"c_billType\\",data[\\"currentClaim\\"][\\"billType\\"]);"
+                            "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
                         ],
                         "type": "text/javascript",
                         "packages": {}
@@ -79,12 +79,12 @@
                     "listen": "test",
                     "script": {
                         "exec": [
-                            "pm.test(\\"Status code is 200\\", function () {\\r",
-                            "    pm.response.to.have.status(200);\\r",
-                            "});\\r",
-                            "pm.test(\\"excd\\", function () {\\r",
-                            "    var jsonData = pm.response.json();\\r",
-                            "    pm.expect(jsonData[0].currentClaim.excd).eq(\\"5JU\\")\\r",
+                            "pm.test(\"Status code is 200\", function () {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"excd\", function () {\r",
+                            "    var jsonData = pm.response.json();\r",
+                            "    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
                             "});"
                         ],
                         "type": "text/javascript",
@@ -97,7 +97,7 @@
                 "header": [],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\\"details\\":[{\'currentClaim\': {\'claimId\': \'3\', \'billType\': 1, \'reimbursementMethod\': \'Check\', \'duplicate\': False, \'denyReason\': \'\', \'hasAdditionalRevCodes\': False, \'pending\': False}, \'previousClaim\': {\'claimId\': \'4\', \'billType\': 2, \'reimbursementMethod\': \'Electronic\', \'duplicate\': False, \'denyReason\': \'\', \'hasAdditionalRevCodes\': True, \'pending\': False}, \'output_current\': {\'excd\': \'\', \'claimNotes\': \'\'}}]}",
+                    "raw": "{\"details\":[{\"currentClaim\": {\"claimId\": \"345678\", \"billType\": 1, \"reimbursementMethod\": \"Direct Deposit\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"previousClaim\": {\"claimId\": \"901234\", \"billType\": 2, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}]}",
                     "options": {
                         "raw": {
                             "language": "json"
@@ -125,7 +125,7 @@
                     "listen": "prerequest",
                     "script": {
                         "exec": [
-                            "// pm.collectionVariables.set(\\"c_billType\\",data[\\"currentClaim\\"][\\"billType\\"]);"
+                            "// pm.collectionVariables.set(\"c_billType\",data[\"currentClaim\"][\"billType\"]);"
                         ],
                         "type": "text/javascript",
                         "packages": {}
@@ -135,12 +135,12 @@
                     "listen": "test",
                     "script": {
                         "exec": [
-                            "pm.test(\\"Status code is 200\\", function () {\\r",
-                            "    pm.response.to.have.status(200);\\r",
-                            "});\\r",
-                            "pm.test(\\"excd\\", function () {\\r",
-                            "    var jsonData = pm.response.json();\\r",
-                            "    pm.expect(jsonData[0].currentClaim.excd).eq(\\"5JU\\")\\r",
+                            "pm.test(\"Status code is 200\", function () {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"excd\", function () {\r",
+                            "    var jsonData = pm.response.json();\r",
+                            "    pm.expect(jsonData[0].currentClaim.excd).eq(\"5JU\")\r",
                             "});"
                         ],
                         "type": "text/javascript",
@@ -153,7 +153,7 @@
                 "header": [],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\\"details\\":[{\'currentClaim\': {\'claimId\': \'5\', \'billType\': 0, \'reimbursementMethod\': \'Check\', \'duplicate\': True, \'denyReason\': \'Invalid claim\', \'hasAdditionalRevCodes\': True, \'pending\': False}, \'previousClaim\': {\'claimId\': \'6\', \'billType\': 1, \'reimbursementMethod\': \'Electronic\', \'duplicate\': False, \'denyReason\': \'\', \'hasAdditionalRevCodes\': True, \'pending\': False}, \'output_current\': {\'excd\': \'5JU\', \'claimNotes\': \'Claim submitted with bill type 0 provider does not expect payment.\'}}]}",
+                    "raw": "{\"details\":[{\"currentClaim\": {\"claimId\": \"567890\", \"billType\": 2, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"previousClaim\": {\"claimId\": \"123456\", \"billType\": 0, \"reimbursementMethod\": \"Check\", \"duplicate\": false, \"denyReason\": \"\", \"hasAdditionalRevCodes\": false, \"pending\": false}, \"output_current\": {\"excd\": \"\", \"claimNotes\": \"\"}}]}",
                     "options": {
                         "raw": {
                             "language": "json"

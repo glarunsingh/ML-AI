@@ -1,10 +1,5 @@
     {
-    "info": {
-		"_postman_id": "6259f6b2-9049-454c-95e4-b82805bfa3f8",
-		"name": "testcollection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "98974"
-	},
+    "info": { "name": "Test Data", "exporter_id": 123 },
     "item": [
         {
         "name": "Positive Flow 1",
