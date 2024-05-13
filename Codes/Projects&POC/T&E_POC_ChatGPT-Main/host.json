@@ -1,0 +1,30 @@
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
+    }
+  },
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[4.*, 5.0.0)"
+  },
+  "extensions": {
+      "http": {
+          "routePrefix": "api",
+          "hsts": {
+              "isEnabled": true,
+              "includeSubDomains": true,
+              "maxAge": "365"
+          },
+          "customHeaders": {
+              "X-Content-Type-Options": "nosniff",
+              "X-Frame-Options": "DENY",
+              "X-XSS-Protection": "1; mode=block"
+          }
+      }
+  }
+}
