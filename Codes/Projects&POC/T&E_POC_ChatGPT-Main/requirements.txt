@@ -27,5 +27,6 @@ cachetools
 gptcache
 azure-core
 pandas
+sentence_transformers
 
 

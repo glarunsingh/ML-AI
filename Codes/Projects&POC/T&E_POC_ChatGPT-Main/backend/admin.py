@@ -4,6 +4,7 @@ import pymongo
 import logging
 from datetime import datetime, timezone
 import sys
+import random
 # from dotenv import load_dotenv
 # load_dotenv()
 
@@ -20,6 +21,18 @@ Usercollection = db["UserDetails"]
 Entitycollection = db["Entities"]
 Rolecollection =db["Roles"]
 Querycollection =db["Queries"]
+customresponse = db["outofdomain"]
+
+# Get random response from Mongodb
+def get_random_response(customresponse):
+    # Fetch all responses from MongoDB
+    responses = list(db.noresponse.find({}, {'_id': 0, 'response': 1}))
+    # Select a random response
+    random_response = random.choice(responses)
+    return random_response['response']
+    
+    #return response_from_llm  # If response from LLM is not empty, return it
+
 
 # Simple function to assist with vector search
 def vector_search(query_embedding, num_results=5):
@@ -235,3 +248,41 @@ def updaterole(request_body):
         
     except Exception as error:
         logging.exception("Exception while updating role details", error)
+
+
+# Insert custom responses if not already present
+def insert_custom_responses():
+    try:
+        # Check if the collection is empty
+        if db.noresponse.count_documents({}) == 0:
+            custom_responses = [
+                {"_id": 1, "response": "I’m sorry, but that’s like asking a toaster to make a salad. Let’s try something else!"},
+                {"_id": 2, "response": "Oops! That question flew over my circuits. Can we try a ground ball instead?"},
+                {"_id": 3, "response": "Hmm, that’s like asking a fish to juggle. Can we try another question?"},
+                {"_id": 4, "response": "That’s a great question, but it’s like asking a cactus to sing. Can we try something else?"},
+                {"_id": 5, "response": "I’m afraid that’s like asking a penguin to sunbathe. Can we navigate back to cooler waters?"},
+                {"_id": 6, "response": "That’s outside my knowledge base. It’s like asking a snail to run a marathon!"},
+                {"_id": 7, "response": "I’m sorry, but that’s like asking a robot to do a cartwheel. Can we try another question?"},
+                {"_id": 8, "response": "That’s a bit like asking a cat to moo. They’re great at meowing, but mooing isn’t their thing. Can we try another question?"},
+                {"_id": 9, "response": "Hmm, that’s like asking a squirrel to do your taxes. Can we explore another topic?"},
+                {"_id": 10, "response": "I’m afraid that’s like asking a potato to dance. Can we try another question?"},
+                {"_id": 11, "response": "That’s like asking a robot to cry at a sad movie. Can we try another question?"},
+                {"_id": 12, "response": "Hmm, that’s like asking a turtle to do a backflip. Can we explore another topic?"},
+                {"_id": 13, "response": "I’m sorry, but that’s like asking a chicken to bark. Let’s try something else!"},
+                {"_id": 14, "response": "Oops! That question is like asking a tree to walk. Can we try a different one?"},
+                {"_id": 15, "response": "That’s a great question, but it’s like asking a cloud to dance. Can we try something else?"},
+                {"_id": 16, "response": "I’m afraid that’s like asking a rock to swim. Can we navigate back to solid ground?"},
+                {"_id": 17, "response": "That’s a bit like asking a dog to meow. They’re great at barking, but meowing isn’t their thing. Can we try another question?"},
+                {"_id": 18, "response": "Hmm, that’s like asking a rabbit to roar. Can we explore another topic?"},
+                {"_id": 19, "response": "I’m sorry, but that’s like asking a robot to fall in love. Can we try another question?"},
+                {"_id": 20, "response": "That’s a bit like asking a mouse to roar like a lion. Can we try another question?"}
+            ]
+            db.noresponse.insert_many(custom_responses)
+            logging.info("Custom responses inserted successfully.")
+        else:
+            logging.info("Custom responses already exist in the database.")
+    except Exception as error:
+        logging.exception("Exception while inserting custom responses", error)
+
+# Call the function to insert custom responses
+insert_custom_responses()

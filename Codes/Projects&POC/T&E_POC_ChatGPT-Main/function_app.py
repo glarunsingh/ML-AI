@@ -21,12 +21,22 @@ from backend.admin import insertuser,getuser,updateuser
 from backend.admin import insertentity,getentity,updateentity
 from backend.admin import insertrole,getrole,updaterole
 from backend.admin import insertquery,updatequery,vector_search,getquerydetails
+from backend.admin import get_random_response, customresponse
 from collections import namedtuple
 from datetime import datetime
 import functools
 import json
 import six
 from functools import lru_cache
+import pymongo
+from pymongo import MongoClient
+import random
+import re
+from sentence_transformers import SentenceTransformer, util
+import numpy as np
+import json
+import random
+
 #import cachetools
 load_dotenv()
 
@@ -202,6 +212,28 @@ client = AzureOpenAI(
     api_key=AZURE_OPENAI_KEY
     # ,azure_ad_token_provider=token_provider if not AZURE_OPENAI_KEY else None
 )
+
+no_data_keywords = [
+    "not found",
+    "no results",
+    "empty",
+    "no matches",
+    "couldn't find any relevant data",
+    "0",
+    "This question is out of domain.",
+    "Based on the information provided, the eligibility for goods transfer during relocation is not explicitly mentioned in the retrieved documents. Therefore, I cannot provide a specific answer regarding the eligibility for goods transfer during relocation based on the retrieved documents. If you have specific questions about the relocation policy, it would be best to refer to the official policy documents or reach out to the relevant department for clarification.",
+    "Based on the information provided, you can claim the expenses incurred during your business trip of 14 days, which exceeded 2 days for business requirement, under the 'Repatriation Claims - Process (Global)' policy. This policy covers expenses related to repatriation, including baggage, hotel, COVID-19 medical tests, ground transportation, individual meals, and other related expenses. It provides detailed guidelines and supporting documents required for claiming various types of expenses during such trips.",
+    "The requested information is not found in the retrieved data. Please try another query or topic.",
+    "The retrieved documents do not contain specific information on how to change the policy in Concur. Therefore, I am unable to provide a direct answer based on the retrieved documents.",
+    "Error Message",
+    "This question is out of the scope of the retrieved documents.",
+    "The requested information is not found in the retrieved data. Please try another query or topic.-No guidelines for Depedents relocation Airfare expenses found",
+    "The SOX documentation to be followed is not specified in the retrieved documents. Therefore, the specific SOX documentation to be followed is not available in the provided documents.",
+    "Based on the retrieved documents, there is no specific mention of the frequency with which reports should be run to ascertain the amount outstanding with Amex. Therefore, the exact number of times in a week to run the reports for this purpose is not provided in the documents.",
+    "This is out of Domain.",
+    "This question is out of the scope of the provided documents."
+]
+
 
 def should_use_data():
     global DATASOURCE_TYPE
@@ -527,7 +559,7 @@ def getsearchresult(query):
         results = search_client.search(  
         search_text=None,  
         vector_queries= [vector_query],
-        select=["Query", "content","Citation"],
+        select=["Query", "Content","Citation"],
         ) 
         # print(results)
 
@@ -548,10 +580,9 @@ def getsearchresult(query):
 
 def cacheresult(id, query,content,result):
     try:
-        input_data = [{"id":id,"Query": query,"content": content,"Citation": json.dumps(result)}]
-
+        input_data = [{"id":id,"Query": query,"Content": content,"Citation": json.dumps(result)}]
         titles = [item['Query'] for item in input_data]
-        content = [item['content'] for item in input_data]
+        content = [item['Content'] for item in input_data]
         title_response = client.embeddings.create(input=titles, model=embedding_model_name)
         title_embeddings = [item.embedding for item in title_response.data]
         content_response = client.embeddings.create(input=content, model=embedding_model_name)
@@ -560,7 +591,7 @@ def cacheresult(id, query,content,result):
         # # Generate embeddings for title and content fields
         for i, item in enumerate(input_data):
             title = item['Query']
-            content = item['content']
+            content = item['Content']
             item['titleVector'] = title_embeddings[i]
             item['contentVector'] = content_embeddings[i]
         
@@ -624,7 +655,7 @@ def savequery(query,empid,category,result):
         query_embedding = generate_embeddings(query)   
 
         # savequery  
-        content =result["choices"][0]["messages"][1]["content"]                 
+        content =result["choices"][0]["messages"][1]["content"]          
         referencecontent = json.loads(result["choices"][0]["messages"][0]["content"])["citations"]
         response_obj = {
                 "Empid": empid,            
@@ -664,13 +695,25 @@ def complete_chat_request(request_body):
 
         result = format_non_streaming_response(response, history_metadata)
         id =result['id']
-        content =result["choices"][0]["messages"][1]["content"]
-       
-        cacheresult(id,query,content,result)
+        content = result["choices"][0]["messages"][1]["content"]
+        #print(content)
+        #checking for citations
+        referencecontent = json.loads(result["choices"][0]["messages"][0]["content"])["citations"]
+        #if length == 0 replacing the content with random response
+        if len(referencecontent) == 0:
+            randomresponse = get_random_response(customresponse)
+            #print(randomresponse)
+            # Load the JSON string into a Python dictionary
+            #result_dict = json.loads(result)
+            result["choices"][0]["messages"][1]["content"] = randomresponse
+            #print(result)
+        else:
+            cacheresult(id,query,content,result)
           
         savequery(query,empid,category,result)       
-            
-        return json.dumps(result)
+        result = json.dumps(result, indent=4, ensure_ascii=False)    
+        #return json.dumps(result)
+        return result
     else:
         result = json.loads(response)
         # print(result)
@@ -909,20 +952,22 @@ def get_role(req: func.HttpRequest) -> func.HttpResponse:
 #cache = cachetools.LRUCache(maxsize= 128)
 
 @app.route("conversation", methods=["POST"])
-
 def conversation(req: func.HttpRequest) -> func.HttpResponse:
     try:
         request_json = req.get_json()
-        
         result = conversation_internal(request_json)
+        
         #print(conversation_internal.cache_info())
-            #cache[request_json] = result
+        #cache[request_json] = result
         return func.HttpResponse(result)
     except Exception as e:
         logging.exception("Exception in conversation api")
         return func.HttpResponse(json.dumps({"error": str(e)}), 500)
 
-
+def extract_assistant_content(json_response):
+    messages = json_response.get("choices", [])[0].get("messages", [])
+    assistant_contents = [message["content"] for message in messages if message["role"] == "assistant"]
+    return assistant_contents
 
 ## Conversation History API ## 
 @app.route("history/generate", methods=["POST"])
@@ -1284,4 +1329,3 @@ def generate_title(conversation_messages):
         return title
     except Exception as e:
         return messages[-2]['content']
-
