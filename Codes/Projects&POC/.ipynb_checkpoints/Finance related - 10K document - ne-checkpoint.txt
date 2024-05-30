@@ -1,0 +1,10 @@
+Finance related - 10K document - need many indexes
+process related document - 
+
+Faiss - File, 
+	- File, 
+
+routing capability
+
+pi model
+azureopenai
