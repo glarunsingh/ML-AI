@@ -23,7 +23,7 @@ os.environ["LLM_EMBEDDING_MODEL"] = "dskumar-text-embedding-ada-002"
 # Data model
 class RouteQuery(BaseModel):
     """Route a user query to the most relevant datasource."""
-    datasource: Literal["10K_docs", "process_docs", "HR_docs"] = Field(
+    datasource: Literal["10K_docs", "finance_process_docs", "HR_process_docs"] = Field(
         ..., description="Given a user question choose which datasource would be most relevant for answering their question",
     )
 
@@ -99,22 +99,22 @@ hr_index_path = 'faiss_hr_index.index'
 hr_metadata_path = 'faiss_hr_metadata.pkl'
 
 # Datasources
-finance_loader = PyPDFLoader(r".\citi-2022-annual-report.pdf")
+finance_loader = PyPDFLoader(r".\Accenture-2022-10-K.pdf")
 finance_vector = get_or_create_faiss_index(finance_loader, embeddings, finance_index_path, finance_metadata_path)
 tenk_retriever = finance_vector.as_retriever()
 
-process_loader = PyPDFLoader(r".\The_Barclays_Way.pdf")
+process_loader = PyPDFLoader(r".\swift_india_travel_expense_policy.pdf")
 process_vector = get_or_create_faiss_index(process_loader, embeddings, process_index_path, process_metadata_path)
 process_retriever = process_vector.as_retriever()
 
-hr_loader = PyPDFLoader(r".\Citibank-Online.pdf")
+hr_loader = PyPDFLoader(r".\Health Insurance Handbook (English).pdf")
 hr_vector = get_or_create_faiss_index(hr_loader, embeddings, hr_index_path, hr_metadata_path)
 hr_retriever = hr_vector.as_retriever()
 
 # Define router
 router = prompt | structured_llm
 
-question = """what is the profit for citi bank last year?"""
+question = """what is the process for raising travel and expenses?"""
 
 result = router.invoke({"question": question})
 
@@ -123,7 +123,7 @@ print(result.datasource)
 def choose_route(result):
     if "10K_docs" in result.datasource:
         return tenk_retriever
-    elif "process_docs" in result.datasource:
+    elif "finance_process_docs" in result.datasource:
         return process_retriever
     else:
         return hr_retriever

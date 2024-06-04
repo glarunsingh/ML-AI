@@ -68,4 +68,4 @@ chain = (
     | StrOutputParser()
 )
 
-print(chain.invoke("how we can manage the malpractice performed by the employees?"))
+print(chain.invoke("how much of the income earned by citi bank last year?"))
