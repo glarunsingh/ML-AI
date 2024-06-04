@@ -1,8 +1,7 @@
+import logging
 import azure.functions as func
-
-app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
-
 import os
+import json
 import pickle
 import faiss
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
@@ -77,10 +76,10 @@ def get_or_create_faiss_index(loader, embeddings, index_path, metadata_path):
                 index_to_docstore_id=index_to_docstore_id,
                 docstore=docstore
             )
-            print(f"Loaded FAISS index and metadata from {index_path} and {metadata_path}.")
+            logging.info(f"Loaded FAISS index and metadata from {index_path} and {metadata_path}.")
         except (EOFError, pickle.UnpicklingError) as e:
-            print(f"Error loading FAISS index or metadata: {e}")
-            print("Recreating index and metadata...")
+            logging.error(f"Error loading FAISS index or metadata: {e}")
+            logging.info("Recreating index and metadata...")
             docs = loader.load()
             documents = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200).split_documents(docs)
             vector = FAISS.from_documents(documents, embeddings)
@@ -102,7 +101,7 @@ def get_or_create_faiss_index(loader, embeddings, index_path, metadata_path):
         }
         with open(metadata_path, 'wb') as f:
             pickle.dump(metadata, f)
-        print(f"Created and saved FAISS index and metadata to {index_path} and {metadata_path}.")
+        logging.info(f"Created and saved FAISS index and metadata to {index_path} and {metadata_path}.")
     return vector
 
 # Datasource paths
@@ -136,7 +135,7 @@ def prompt_router(input):
     most_similar = prompt_templates[most_similar_index]
     chosen_route = "tenk" if most_similar_index == 1 else "finance"
     # Chosen prompt
-    print(f"Using {chosen_route} route")
+    logging.info(f"Using {chosen_route} route")
     return chosen_route, PromptTemplate.from_template(most_similar)
 
 # Function to retrieve relevant data and pass to LLM
@@ -153,7 +152,7 @@ def get_response(input):
     # Retrieve relevant data
     docs = retriever.invoke(input["query"])
     context = " ".join([doc.page_content for doc in docs])
-    print(context)
+    logging.info(context)
 
     # Format prompt with retrieved context
     formatted_prompt = result_template.format(query=input["query"], context=context)
@@ -170,8 +169,13 @@ def get_response(input):
     response = azurechatmodel.invoke(messages)
     return response
 
-# Get query from user
-user_query = input("Please enter your question: ")
-input_query = {"query": user_query}
-response = get_response(input_query)
-print(f"Response: {response.content}")
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    try:
+        req_body = req.get_json()
+        input_query = {"query": req_body.get("query")}
+        response = get_response(input_query)
+        logging.info(f"Response: {response.content}")
+        return func.HttpResponse(response.content)
+    except Exception as e:
+        logging.exception("Exception in conversation API")
+        return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500)
